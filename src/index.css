@@ -1,0 +1,367 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #F8FAFC;
+    color: #0F172A;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Scrapbook Dot Grid Background */
+.bg-dot-grid {
+  background-color: #F8FAFC;
+  background-image: radial-gradient(#CBD5E1 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+
+.bg-dot-grid-subtle {
+  background-image: radial-gradient(#E2E8F0 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+/* Halftone Dot Pattern for Pop Art accents */
+.bg-halftone {
+  background-image: radial-gradient(#2563EB 0.8px, transparent 0.8px);
+  background-size: 8px 8px;
+  opacity: 0.15;
+}
+
+/* Lined Notebook Paper Pattern */
+.bg-notebook-lines {
+  background-color: #FFFFFF;
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 27px,
+    #E2E8F0 27px,
+    #E2E8F0 28px
+  );
+  line-height: 28px;
+}
+
+/* Washi Tape Strips (Living Scrapbook) */
+.washi-tape {
+  position: absolute;
+  height: 18px;
+  opacity: 0.88;
+  backdrop-filter: blur(1px);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+  z-index: 10;
+  pointer-events: none;
+  border-left: 2px dashed rgba(255, 255, 255, 0.4);
+  border-right: 2px dashed rgba(255, 255, 255, 0.4);
+}
+
+.washi-yellow {
+  background: linear-gradient(135deg, rgba(254, 240, 138, 0.95), rgba(250, 204, 21, 0.9));
+  border-top: 1px solid rgba(234, 179, 8, 0.3);
+  border-bottom: 1px solid rgba(234, 179, 8, 0.3);
+}
+
+.washi-pink {
+  background: linear-gradient(135deg, rgba(254, 205, 211, 0.95), rgba(244, 63, 94, 0.88));
+  border-top: 1px solid rgba(225, 29, 72, 0.3);
+  border-bottom: 1px solid rgba(225, 29, 72, 0.3);
+}
+
+.washi-blue {
+  background: linear-gradient(135deg, rgba(191, 219, 254, 0.95), rgba(37, 99, 235, 0.88));
+  border-top: 1px solid rgba(29, 78, 216, 0.3);
+  border-bottom: 1px solid rgba(29, 78, 216, 0.3);
+}
+
+.washi-cyan {
+  background: linear-gradient(135deg, rgba(165, 243, 252, 0.95), rgba(6, 182, 212, 0.88));
+  border-top: 1px solid rgba(8, 145, 178, 0.3);
+  border-bottom: 1px solid rgba(8, 145, 178, 0.3);
+}
+
+.washi-lime {
+  background: linear-gradient(135deg, rgba(217, 249, 157, 0.95), rgba(132, 204, 22, 0.88));
+  border-top: 1px solid rgba(101, 163, 13, 0.3);
+  border-bottom: 1px solid rgba(101, 163, 13, 0.3);
+}
+
+.washi-striped {
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(254, 240, 138, 0.9),
+    rgba(254, 240, 138, 0.9) 8px,
+    rgba(244, 63, 94, 0.85) 8px,
+    rgba(244, 63, 94, 0.85) 16px
+  );
+}
+
+/* Rubber Stamp Effect (Pop Art) */
+.pop-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  border: 2px dashed currentColor;
+  border-radius: 8px;
+  user-select: none;
+  box-shadow: inset 0 0 0 1px currentColor;
+  transform: rotate(-3deg);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pop-stamp:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+/* Animated Rubber Stamp Slam Animation */
+@keyframes stampDown {
+  0% {
+    opacity: 0;
+    transform: scale(2.2) rotate(-15deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(0.92) rotate(-4deg);
+  }
+  85% {
+    transform: scale(1.04) rotate(-3deg);
+  }
+  100% {
+    transform: scale(1) rotate(-3deg);
+  }
+}
+
+.animate-stamp {
+  animation: stampDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Sticker Hover Wiggle */
+@keyframes stickerWiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg) scale(1.04); }
+  75% { transform: rotate(3deg) scale(1.04); }
+}
+
+.hover-wiggle:hover {
+  animation: stickerWiggle 0.35s ease-in-out infinite alternate;
+}
+
+/* Smooth Paper Lift on Hover */
+.scrapbook-card {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scrapbook-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px -4px rgba(15, 23, 42, 0.12), 0 6px 14px -2px rgba(15, 23, 42, 0.06);
+}
+
+/* Torn Paper Edge CSS */
+.torn-edge-top {
+  position: relative;
+}
+.torn-edge-top::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: radial-gradient(circle at 6px 6px, transparent 6px, #FFFFFF 6px);
+  background-size: 12px 6px;
+}
+
+/* Notebook Binder Rings */
+.binder-ring {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #E2E8F0;
+  border: 2px solid #94A3B8;
+  box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.2);
+}
+
+/* Custom Scrollbar for clean studio feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scrapbook Page Flip Effect */
+@keyframes pageFlipIn {
+  0% {
+    opacity: 0;
+    transform: perspective(600px) rotateX(10deg) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(600px) rotateX(0deg) translateY(0);
+  }
+}
+
+.animate-page-flip {
+  animation: pageFlipIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ========================================================
+   MOCHI & PIKO COMPANION ANIMATIONS
+   ======================================================== */
+
+/* Mochi Animations */
+@keyframes mochiIdle {
+  0%, 100% {
+    transform: translateY(0) scale(1, 1);
+  }
+  50% {
+    transform: translateY(-3px) scale(1.02, 0.98);
+  }
+}
+.animate-mochi-idle {
+  animation: mochiIdle 3.6s ease-in-out infinite;
+}
+
+@keyframes mochiWalk {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-2px) rotate(-3deg);
+  }
+  75% {
+    transform: translateY(-2px) rotate(3deg);
+  }
+}
+.animate-mochi-walk {
+  animation: mochiWalk 0.6s ease-in-out infinite;
+}
+
+@keyframes mochiJump {
+  0% {
+    transform: translateY(0) scale(1, 1);
+  }
+  30% {
+    transform: translateY(2px) scale(1.12, 0.88);
+  }
+  50% {
+    transform: translateY(-16px) scale(0.92, 1.08);
+  }
+  75% {
+    transform: translateY(0) scale(1.05, 0.95);
+  }
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+.animate-mochi-jump {
+  animation: mochiJump 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes mochiPawWave {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-25deg);
+  }
+}
+.animate-mochi-paw-wave {
+  animation: mochiPawWave 0.35s ease-in-out infinite;
+}
+
+/* Piko Animations */
+@keyframes pikoBreathe {
+  0%, 100% {
+    transform: translateY(0) scale(1, 1);
+  }
+  50% {
+    transform: translateY(-2px) scale(0.98, 1.02);
+  }
+}
+.animate-piko-breathe {
+  animation: pikoBreathe 4.2s ease-in-out infinite;
+}
+
+@keyframes pikoPeek {
+  0% {
+    transform: translateY(12px) scale(0.92);
+  }
+  60% {
+    transform: translateY(-4px) rotate(2deg) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+.animate-piko-peek {
+  animation: pikoPeek 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pikoTilt {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-6deg);
+  }
+}
+.animate-piko-tilt {
+  animation: pikoTilt 1.2s ease-in-out infinite;
+}
+
+@keyframes pikoShyWave {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+}
+.animate-piko-shy-wave {
+  animation: pikoShyWave 0.5s ease-in-out infinite;
+}
+
+/* Reduced Motion Respect */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
